@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Awareness Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+}
+
+#chatArea {
+    margin-bottom: 20px;
+    min-height: 200px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    overflow-y: auto;
+    border-radius: 1rem;
+    
+}
+
+#inputArea {
+    display: flex;
+    border-radius: 1rem;
+    
+}
+
+#userInput {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    outline: none;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#btn{
+    margin-left: 5px;
+}
+    </style>
+</head>
+<body>
+<h2> You Can Ask Some Questions Related To KYC. </h2>
+    <div class="container">
+        <h1>Legal Awareness Assistant</h1>
+        <div id="chatArea"></div>
+        <div id="inputArea">
+            <input type="text" id="userInput" placeholder="Type your question..." autofocus>
+            <button onclick="askQuestion()">Ask</button>
+            <button id="btn" onclick="clearChat()">Clear</button> <!-- Added Clear button -->
+        </div>
+    </div>
+
+    <script>
+        // Array of sample legal responses
+const legalResponses = [
+    "As a citizen, you have the right to access legal aid services. You can contact your nearest legal aid office for assistance.",
+    "To file a complaint, you can visit the nearest police station or file an online complaint through the official government portal.",
+    "Legal documents such as birth certificates, property deeds, and marriage certificates can be obtained from the respective government offices or online portals.",
+    "It's important to consider the legal implications of your actions. You may want to consult with a legal expert for specific advice.",
+    "Labor laws protect workers' rights in India. You can learn more about your rights as an employee from the Ministry of Labor and Employment website.",
+    "As a customer, you have the right to ensure your identity is verified through the KYC process. If you need assistance, you can contact your nearest financial institution or regulatory authority for guidance.",
+    "To report any issues or concerns regarding the KYC process, you can reach out to the relevant financial institution's customer service department. Additionally, regulatory authorities often have channels for filing complaints related to KYC procedures.",
+    "KYC documents such as government-issued IDs and proof of address can typically be obtained from official government agencies or online portals. Ensure you have the necessary documents to comply with KYC requirements.",
+    "It's crucial to understand the legal implications of providing false information during the KYC process. Consult with legal experts if you have any doubts or concerns about KYC compliance to avoid potential legal consequences.",
+    "In the context of KYC compliance, it's important to consider any relevant labor laws that may apply to your business. Ensure you are adhering to both KYC regulations and labor laws to protect the rights of employees and customers alike.",
+    "Yes, KYC involves ongoing monitoring of customer transactions and activities to detect suspicious behavior or changes in risk profile. This helps businesses identify and report suspicious transactions as required by law.",
+    "Non-compliance with KYC regulations can lead to penalties, fines, and other legal consequences for businesses. It's essential for businesses to stay updated on regulations and ensure compliance.",
+    " No, using fake documents for KYC is illegal and considered fraud. Businesses must verify the authenticity of documents to prevent identity theft and fraud.",
+    "Typically, businesses ask for government-issued IDs like passports or driver's licenses, as well as documents like utility bills or bank statements to verify a customer's identity.",
+    " KYC is important because it helps businesses ensure they're dealing with legitimate customers and comply with regulations to prevent illegal activities.",
+    " KYC stands for Know Your Customer. It's a process where businesses verify the identity of their customers to prevent financial crimes like money laundering and fraud.",
+    "In summary, KYC is a critical process for businesses to verify the identity of their customers and mitigate the risk of financial crimes. While conducting KYC checks is legal and necessary for regulatory compliance, businesses must ensure that they follow proper procedures, protect customer information, and comply with relevant laws and regulations to avoid legal liabilities."
+];
+
+function askQuestion() {
+    const userInput = document.getElementById('userInput').value;
+    if (userInput.trim() === '') {
+        alert('Please enter a question.');
+        return;
+    }
+
+    // Generate a random legal response (for demonstration purposes)
+    const randomIndex = Math.floor(Math.random() * legalResponses.length);
+    const response = legalResponses[randomIndex];
+
+    // Display user question and legal response in chat area
+    const chatArea = document.getElementById('chatArea');
+    const userQuestion = document.createElement('div');
+    userQuestion.innerText = `You: ${userInput}`;
+    chatArea.appendChild(userQuestion);
+
+    const assistantResponse = document.createElement('div');
+    assistantResponse.innerText = `Assistant: ${response}`;
+    chatArea.appendChild(assistantResponse);
+
+    // Clear user input
+    document.getElementById('userInput').value = '';
+
+    // Scroll to the bottom of the chat area
+    chatArea.scrollTop = chatArea.scrollHeight;
+}
+
+function clearChat() {
+    const chatArea = document.getElementById('chatArea');
+    chatArea.innerHTML = ''; // Clear the chat area
+}
+    </script>
+</body>
+</html>
